@@ -9,7 +9,7 @@ public class Saul_Gonzalez_Project1 {
         int testSize = 0;
         BagInterface<String> testCurrentSize = new LinkedBag<>();
         if (testCurrentSize.isEmpty()) {
-            testCurrentSize.add("J");
+            testCurrentSize.add(testString1);
             testSize++;
         }
 
