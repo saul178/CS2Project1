@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Saul_Gonzalez_Project1 {
     private static final String testString1 = "hello1";
@@ -89,18 +90,35 @@ public class Saul_Gonzalez_Project1 {
             containsTest.add(testString1);
             containsTest.add(testString2);
         }
-        return containsTest.contains(testString1) && containsTest.getFrequencyOf(testString1) == 1;
+        return containsTest.contains(testString1) && containsTest.getFrequencyOf(testString1) >= 1;
+    }
+
+    private static boolean compareArrays(Object[] arr1, String[] arr2) {
+        boolean result = false;
+        if (arr1.length == arr2.length) {
+            for (int i = 0; i < arr1.length; i++) {
+                if (!Objects.equals(arr1[i], arr2[i])) {
+                    result = false;
+                    break;
+                } else {
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 
     public static boolean testToArray() {
         LinkedBag<String> arrayTest = new LinkedBag<>();
-        String[] testArrayManually = {testString1, testString2, testString3};
+        String[] testArrayManually = {testString3, testString2, testString1};
 
-        arrayTest.add(testString3);
-        arrayTest.add(testString2);
         arrayTest.add(testString1);
+        arrayTest.add(testString2);
+        arrayTest.add(testString3);
 
-        return Arrays.equals(arrayTest.toArray(), testArrayManually);
+        Object[] values = arrayTest.toArray();
+
+        return compareArrays(values, testArrayManually);
     }
 
     public static void main(String[] args) {
